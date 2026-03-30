@@ -19,32 +19,44 @@
 
         <div id="standard-ui">
             <div class="display-wrapper">
-                <div id="unit-indicator">DEG</div>
+                <span id="unit-indicator">DEG</span>
                 <input type="text" id="main-display" value="0" readonly>
             </div>
-            <div class="keypad">
+            <div class="keypad scientific-grid">
+                <button class="btn sci" onclick="ins('sin(')">sin</button>
+                <button class="btn sci" onclick="ins('cos(')">cos</button>
+                <button class="btn sci" onclick="ins('tan(')">tan</button>
+                <button class="btn sci" onclick="ins('Math.PI')">π</button>
                 <button class="btn opt" onclick="clr()">AC</button>
+
+                <button class="btn sci" onclick="ins('log(')">log</button>
+                <button class="btn sci" onclick="ins('ln(')">ln</button>
+                <button class="btn sci" onclick="ins('sqrt(')">√</button>
+                <button class="btn sci" onclick="ins('**')">^</button>
                 <button class="btn opt" onclick="del()">DEL</button>
-                <button class="btn opt" onclick="toggleUnit()">DRG</button>
-                <button class="btn opt" onclick="ins('/')">/</button>
-                
+
                 <button class="btn num" onclick="ins('7')">7</button>
                 <button class="btn num" onclick="ins('8')">8</button>
                 <button class="btn num" onclick="ins('9')">9</button>
-                <button class="btn opt" onclick="ins('*')">×</button>
-                
+                <button class="btn opt" onclick="ins('(')">(</button>
+                <button class="btn opt" onclick="ins('/')">/</button>
+
                 <button class="btn num" onclick="ins('4')">4</button>
                 <button class="btn num" onclick="ins('5')">5</button>
                 <button class="btn num" onclick="ins('6')">6</button>
-                <button class="btn opt" onclick="ins('-')">-</button>
-                
+                <button class="btn opt" onclick="ins(')')">)</button>
+                <button class="btn opt" onclick="ins('*')">×</button>
+
                 <button class="btn num" onclick="ins('1')">1</button>
                 <button class="btn num" onclick="ins('2')">2</button>
                 <button class="btn num" onclick="ins('3')">3</button>
-                <button class="btn opt" onclick="ins('+')">+</button>
-                
+                <button class="btn opt" onclick="toggleUnit()">DRG</button>
+                <button class="btn opt" onclick="ins('-')">-</button>
+
                 <button class="btn num" onclick="ins('0')">0</button>
                 <button class="btn num" onclick="ins('.')">.</button>
+                <button class="btn sci" onclick="ins('Math.E')">e</button>
+                <button class="btn opt" onclick="ins('+')">+</button>
                 <button class="btn run" onclick="run()">=</button>
             </div>
         </div>
