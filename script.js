@@ -25,12 +25,9 @@ function run() {
             exp = exp.replace(/Math\.(sin|cos|tan)\(([^)]+)\)/g, (m, f, v) => `Math.${f}(${v} * Math.PI / 180)`);
         }
 
-        // Fix Power Notation
-        exp = exp.replace(/(\d+)\*\*(\d+)/g, "Math.pow($1,$2)");
-
         let result = eval(exp);
         
-        // Format decimals nicely for your iQOO screen
+        // Final formatting
         display.value = Number.isInteger(result) ? result : parseFloat(result.toFixed(8));
     } catch {
         display.value = "SYNTAX ERR";
