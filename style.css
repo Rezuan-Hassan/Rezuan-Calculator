@@ -1,85 +1,79 @@
 :root {
-    --bg: #0a0a0a;
-    --card: #121212;
+    --bg: #000;
+    --card: #111;
     --rezuan-green: #00ff88;
-    --glow: rgba(0, 255, 136, 0.4);
+    --text-dim: #888;
 }
 
-/* Navigation Styles */
-.calc-nav {
+body {
+    background: var(--bg);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
+    padding-top: 50px;
 }
 
+.container { width: 320px; text-align: center; }
+
+h1 { font-size: 1.5rem; color: white; margin-bottom: 20px; }
+
+/* Navigation */
+.calc-nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
 .nav-btn {
-    background: transparent;
+    background: #222;
     color: var(--rezuan-green);
     border: 1px solid var(--rezuan-green);
-    padding: 10px 20px;
-    border-radius: 12px;
+    padding: 8px 12px;
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+    font-size: 0.8rem;
 }
+.nav-btn.active { background: var(--rezuan-green); color: black; }
 
-.nav-btn.active {
-    background: var(--rezuan-green);
-    color: black;
-    box-shadow: 0 0 15px var(--rezuan-green);
-}
-
-/* CGPA Specific Styles */
-.cgpa-card {
-    background: var(--card);
-    padding: 25px;
-    border-radius: 20px;
-    border: 1px solid #222;
-}
-
-.course-row {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.credits, .grades {
-    background: #000;
-    color: white;
-    border: 1px solid #333;
-    padding: 12px;
-    border-radius: 10px;
-    width: 50%;
-}
-
-.add-btn {
-    background: transparent;
-    color: #888;
-    border: 1px dashed #444;
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.calc-btn {
-    background: var(--rezuan-green);
-    color: black;
-    width: 100%;
+/* Display */
+.display-wrapper {
+    background: #111;
     padding: 15px;
-    border-radius: 12px;
-    font-weight: 900;
-    font-size: 1.1rem;
-    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: right;
+    position: relative;
+}
+#unit-indicator { position: absolute; left: 10px; top: 10px; color: var(--rezuan-green); font-size: 0.7rem; }
+#main-display {
+    background: transparent;
     border: none;
+    color: var(--rezuan-green);
+    font-size: 2rem;
+    width: 100%;
+    text-align: right;
+    outline: none;
+    text-shadow: 0 0 10px var(--rezuan-green);
 }
 
-.cgpa-display {
-    margin: 20px 0;
-    border-top: 1px solid #222;
-    padding-top: 15px;
+/* Keypad */
+.row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.btn {
+    width: 70px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: 0.2s;
 }
+.num { background: #222; color: white; }
+.opt { background: #333; color: var(--rezuan-green); }
+.run { background: #333; color: white; }
+.btn:active { transform: scale(0.95); }
 
+/* CGPA UI */
 .hidden { display: none !important; }
+.cgpa-card { background: var(--card); padding: 20px; border-radius: 10px; border: 1px solid #222; }
+.course-row { display: flex; gap: 5px; margin-bottom: 10px; }
+.credits, .grades { background: #000; border: 1px solid #333; color: white; padding: 10px; border-radius: 5px; width: 50%; }
+.add-btn { background: transparent; color: var(--text-dim); border: 1px dashed #333; width: 100%; padding: 8px; margin-bottom: 15px; cursor: pointer; }
+.calc-btn { background: var(--rezuan-green); color: black; border: none; padding: 12px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer; }
+.cgpa-display { margin-top: 15px; color: var(--rezuan-green); }
