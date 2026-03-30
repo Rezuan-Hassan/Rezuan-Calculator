@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REZUAN CALCULATOR | Pro Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="calculator-body">
+        <header class="calc-header">
+            <h1>REZUAN CALCULATOR</h1>
+            <div class="status-indicators">
+                <span id="unit-indicator">DEG</span>
+                <div class="glow-dot"></div>
+            </div>
+        </header>
+
+        <div class="display-section">
+            <input type="text" id="main-display" value="0" readonly>
+        </div>
+
+        <div class="control-row">
+            <button class="mode-btn" onclick="toggle('sci-panel')">2nd (Math)</button>
+            <button class="mode-btn eng" onclick="toggle('eng-panel')">2nd (CSE)</button>
+        </div>
+
+        <div id="sci-panel" class="panel hidden">
+            <button class="btn fn" onclick="ins('Math.sin(')">sin</button>
+            <button class="btn fn" onclick="ins('Math.cos(')">cos</button>
+            <button class="btn fn" onclick="ins('Math.tan(')">tan</button>
+            <button class="btn fn" onclick="ins('Math.log10(')">log</button>
+            <button class="btn fn" onclick="ins('Math.log(')">ln</button>
+            <button class="btn fn" onclick="ins('Math.PI')">&pi;</button>
+        </div>
+
+        <div id="eng-panel" class="panel hidden">
+            <button class="btn spec" onclick="toBase(2)">BIN</button>
+            <button class="btn spec" onclick="toBase(16)">HEX</button>
+            <button class="btn spec" onclick="ins('**2')">x&sup2;</button>
+            <button class="btn spec" onclick="ins('Math.abs(')">|x|</button>
+            <button class="btn spec" onclick="toggleUnit()">D/R</button>
+            <button class="btn spec" onclick="ins('299792458')">c</button>
+        </div>
+
+        <div class="main-grid">
+            <button class="btn clear" onclick="clr()">C</button>
+            <button class="btn back" onclick="del()"><i class="fas fa-backspace"></i></button>
+            <button class="btn math" onclick="ins('/')">&divide;</button>
+            <button class="btn math" onclick="ins('*')">&times;</button>
+
+            <button class="btn num" onclick="ins('7')">7</button>
+            <button class="btn num" onclick="ins('8')">8</button>
+            <button class="btn num" onclick="ins('9')">9</button>
+            <button class="btn math" onclick="ins('-')">-</button>
+
+            <button class="btn num" onclick="ins('4')">4</button>
+            <button class="btn num" onclick="ins('5')">5</button>
+            <button class="btn num" onclick="ins('6')">6</button>
+            <button class="btn math" onclick="ins('+')">+</button>
+
+            <button class="btn num" onclick="ins('1')">1</button>
+            <button class="btn num" onclick="ins('2')">2</button>
+            <button class="btn num" onclick="ins('3')">3</button>
+            <button class="btn solve" onclick="run()">=</button>
+
+            <button class="btn num zero" onclick="ins('0')">0</button>
+            <button class="btn num" onclick="ins('.')">.</button>
+            <button class="btn math" onclick="ins('**')">x<sup>y</sup></button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+:root {
+    --black: #050505;
+    --dark: #111111;
+    --neon: #00ff88;
+    --glow: rgba(0, 255, 136, 0.5);
+    --white: #f0f0f0;
+}
+
+body {
+    background-color: var(--black);
+    color: var(--white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calculator-body {
+    background: var(--dark);
+    width: 90%;
+    max-width: 380px;
+    padding: 25px;
+    border-radius: 35px;
+    border: 1px solid #222;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 15px var(--glow);
+}
+
+.calc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calc-header h1 {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--neon);
+    text-shadow: 0 0 5px var(--neon);
+    margin: 0;
+}
+
+.glow-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--neon);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--neon);
+}
+
+.display-section {
+    background: #000;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--neon);
+}
+
+#main-display {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--neon);
+    font-size: 2.8rem;
+    text-align: right;
+    outline: none;
+    text-shadow: 0 0 12px var(--neon);
+}
+
+.control-row { display: flex; gap: 10px; margin-bottom: 15px; }
+.mode-btn { 
+    flex: 1; background: #1a1a1a; border: 1px solid var(--neon); 
+    color: var(--neon); padding: 10px; border-radius: 12px; cursor: pointer; 
+    font-size: 0.7rem; font-weight: bold;
+}
+
+.panel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px; padding: 12px; background: #080808; border-radius: 15px; border: 1px dashed #333; }
+.main-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+.btn {
+    background: #252525; border: none; color: var(--white);
+    padding: 20px; border-radius: 15px; font-size: 1.2rem; cursor: pointer;
+    transition: 0.15s;
+}
+
+.btn:active { transform: scale(0.92); background: #333; }
+.math { color: var(--neon); }
+.solve { background: var(--neon); color: black; grid-row: span 2; font-weight: bold; box-shadow: 0 0 15px var(--glow); }
+.clear { color: #ff5555; }
+.hidden { display: none !important; }
+
+@media (max-width: 380px) { .btn { padding: 16px; font-size: 1.1rem; } }
