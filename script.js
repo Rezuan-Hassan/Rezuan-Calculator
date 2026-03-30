@@ -1,7 +1,7 @@
 let display = document.getElementById('main-display');
 let isDeg = true;
 
-// Tab Switcher
+// Tab Switcher Fix
 function switchTab(type) {
     const std = document.getElementById('standard-ui');
     const cg = document.getElementById('cgpa-ui');
