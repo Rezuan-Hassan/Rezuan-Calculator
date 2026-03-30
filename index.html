@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REZUAN CALCULATOR | Pro Edition</title>
+    <title>REZUAN HUB | Pro Edition</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -51,17 +51,17 @@
                 <div class="row">
                     <button class="btn num" onclick="ins('0')">0</button>
                     <button class="btn num" onclick="ins('.')">.</button>
-                    <button class="btn run" onclick="run()" style="width: 50%;">=</button>
+                    <button class="btn run" onclick="run()" style="width: 100px;">=</button>
                 </div>
             </div>
         </div>
 
         <div id="cgpa-ui" class="hidden">
             <div class="cgpa-card">
-                <h3>Semester CGPA Tracker</h3>
+                <h3>DIU CGPA Calculator</h3>
                 <div id="course-container">
                     <div class="course-row">
-                        <input type="number" class="credits" placeholder="Credits (e.g. 3)" step="0.5">
+                        <input type="number" class="credits" placeholder="Credits" step="0.5">
                         <select class="grades">
                             <option value="4.00">A+ (4.00)</option>
                             <option value="3.75">A (3.75)</option>
@@ -81,7 +81,7 @@
                     <p>Total Credits: <span id="total-creds">0</span></p>
                     <h4>GPA: <span id="final-gpa">0.00</span></h4>
                 </div>
-                <button class="calc-btn" onclick="calculateDIU()">Calculate CGPA</button>
+                <button class="calc-btn" onclick="calculateDIU()">Calculate</button>
             </div>
         </div>
     </div>
