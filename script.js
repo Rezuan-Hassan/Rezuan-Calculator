@@ -1,7 +1,7 @@
 let display = document.getElementById('main-display');
 let isDeg = true;
 
-// Tab Switcher Fix
+// Tab Switcher
 function switchTab(type) {
     const std = document.getElementById('standard-ui');
     const cg = document.getElementById('cgpa-ui');
@@ -22,19 +22,42 @@ function switchTab(type) {
 }
 
 // Scientific Logic
-function ins(v) { (display.value === '0') ? display.value = v : display.value += v; }
+function ins(v) { 
+    if (display.value === '0' && v !== '.') display.value = v; 
+    else display.value += v; 
+}
+
 function clr() { display.value = '0'; }
 function del() { display.value = display.value.length > 1 ? display.value.slice(0, -1) : '0'; }
+
 function toggleUnit() {
     isDeg = !isDeg;
     document.getElementById('unit-indicator').innerText = isDeg ? "DEG" : "RAD";
 }
+
 function run() {
     try {
         let exp = display.value;
-        if (isDeg) exp = exp.replace(/Math\.(sin|cos|tan)\(([^)]+)\)/g, (m, f, v) => `Math.${f}(${v} * Math.PI / 180)`);
-        display.value = eval(exp).toFixed(4).replace(/\.?0+$/, "");
-    } catch { display.value = "ERROR"; setTimeout(clr, 1000); }
+        
+        // Advanced Math Mapping
+        exp = exp.replace(/sin\(/g, 'Math.sin(');
+        exp = exp.replace(/cos\(/g, 'Math.cos(');
+        exp = exp.replace(/tan\(/g, 'Math.tan(');
+        exp = exp.replace(/log\(/g, 'Math.log10(');
+        exp = exp.replace(/ln\(/g, 'Math.log(');
+        exp = exp.replace(/sqrt\(/g, 'Math.sqrt(');
+        
+        // Handle Degrees to Radians for Trig if in DEG mode
+        if (isDeg) {
+            exp = exp.replace(/Math\.(sin|cos|tan)\(([^)]+)\)/g, (m, f, v) => `Math.${f}((${v}) * Math.PI / 180)`);
+        }
+
+        let result = eval(exp);
+        display.value = Number.isInteger(result) ? result : parseFloat(result.toFixed(8));
+    } catch {
+        display.value = "SYNTAX ERROR";
+        setTimeout(clr, 1500);
+    }
 }
 
 // DIU CGPA Logic
