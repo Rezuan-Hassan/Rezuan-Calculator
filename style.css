@@ -2,69 +2,77 @@
     --bg: #080808;
     --neon: #00ff88;
     --card: #121212;
+    --btn-dark: #1a1a1a;
 }
 
 body {
     background: var(--bg);
     color: white;
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
-    padding-top: 40px;
+    padding: 30px 10px;
 }
 
-.container { width: 340px; }
+.container { width: 380px; }
 
 /* Navigation */
-.calc-nav { display: flex; gap: 10px; justify-content: center; margin-bottom: 25px; }
+.calc-nav { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; }
 .nav-btn {
-    background: #1a1a1a;
+    background: var(--btn-dark);
     color: var(--neon);
     border: 1px solid var(--neon);
-    padding: 10px 15px;
+    padding: 10px 18px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
+    transition: 0.3s;
 }
 .nav-btn.active { background: var(--neon); color: black; box-shadow: 0 0 15px var(--neon); }
 
-/* Scientific Display */
+/* Advanced Scientific Display */
 .display-wrapper {
     background: #111;
-    padding: 20px;
+    padding: 35px 20px 15px 20px;
     border-radius: 15px;
     margin-bottom: 20px;
-    text-align: right;
-    position: relative;
     border: 1px solid #222;
+    position: relative;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.8);
+}
+#unit-indicator {
+    position: absolute; top: 12px; left: 15px;
+    color: #555; font-size: 0.8rem; font-weight: bold;
 }
 #main-display {
-    background: transparent;
-    border: none;
-    color: var(--neon);
-    font-size: 2.2rem;
-    width: 100%;
-    text-align: right;
-    outline: none;
+    background: transparent; border: none;
+    color: var(--neon); font-size: 2.8rem;
+    width: 100%; text-align: right; outline: none;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 }
 
-/* Keypad Grid Fix */
-.keypad {
+/* 5-Column Grid Fix */
+.scientific-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
 }
+
 .btn {
-    height: 60px;
-    border-radius: 12px;
+    height: 55px;
+    border-radius: 10px;
     border: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.2s;
 }
 .num { background: #222; color: white; }
 .opt { background: #333; color: var(--neon); }
-.run { grid-column: span 2; background: var(--neon); color: black; width: 100%; }
+.sci { background: #1a1a1a; color: #00ccff; font-style: italic; }
+.run { background: var(--neon); color: black; font-size: 1.5rem; }
+.btn:active { transform: scale(0.95); opacity: 0.8; }
 
 /* CGPA UI */
 .hidden { display: none !important; }
@@ -76,4 +84,4 @@ body {
 }
 .add-btn { background: transparent; color: #666; border: 1px dashed #444; width: 100%; padding: 10px; margin: 10px 0; cursor: pointer; }
 .calc-btn { background: var(--neon); color: black; border: none; width: 100%; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; }
-.result-area { margin: 15px 0; color: var(--neon); }
+.result-area { margin: 15px 0; color: var(--neon); text-align: center; }
