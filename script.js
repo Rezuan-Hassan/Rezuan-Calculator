@@ -1,7 +1,6 @@
 let display = document.getElementById('main-display');
 let isDeg = true;
 
-// --- TAB SWITCHING LOGIC ---
 function switchTab(tab) {
     const stdUI = document.getElementById('standard-ui');
     const cgpaUI = document.getElementById('cgpa-ui');
@@ -21,79 +20,58 @@ function switchTab(tab) {
     }
 }
 
-// --- ORIGINAL SCIENTIFIC LOGIC ---
+// Scientific Calculator Logic
 function ins(val) {
     if (display.value === '0') display.value = val;
     else display.value += val;
 }
-
 function clr() { display.value = '0'; }
 function del() { display.value = display.value.length > 1 ? display.value.slice(0, -1) : '0'; }
-
 function toggleUnit() {
     isDeg = !isDeg;
     document.getElementById('unit-indicator').innerText = isDeg ? "DEG" : "RAD";
 }
-
 function run() {
     try {
         let exp = display.value;
-        if (isDeg) {
-            exp = exp.replace(/Math\.(sin|cos|tan)\(([^)]+)\)/g, (m, f, v) => `Math.${f}(${v} * Math.PI / 180)`);
-        }
+        if (isDeg) exp = exp.replace(/Math\.(sin|cos|tan)\(([^)]+)\)/g, (m, f, v) => `Math.${f}(${v} * Math.PI / 180)`);
         let result = eval(exp);
         display.value = Number.isInteger(result) ? result : parseFloat(result.toFixed(8));
     } catch {
-        display.value = "SYNTAX ERR";
+        display.value = "ERR";
         setTimeout(clr, 1500);
     }
 }
 
-// --- NEW CGPA LOGIC ---
+// CGPA Logic
 function addCourse() {
     const container = document.getElementById('course-container');
     const row = document.createElement('div');
     row.className = 'course-row';
-    row.innerHTML = `
-        <input type="number" class="credits" placeholder="Credits" step="0.5">
+    row.innerHTML = `<input type="number" class="credits" placeholder="Credits" step="0.5">
         <select class="grades">
-            <option value="4.00">A+ (4.00)</option>
-            <option value="3.75">A (3.75)</option>
-            <option value="3.50">A- (3.50)</option>
-            <option value="3.25">B+ (3.25)</option>
-            <option value="3.00">B (3.00)</option>
-            <option value="2.75">B- (2.75)</option>
-            <option value="2.50">C+ (2.50)</option>
-            <option value="2.25">C (2.25)</option>
-            <option value="2.00">D (2.00)</option>
-            <option value="0.00">F (0.00)</option>
-        </select>
-    `;
+            <option value="4.00">A+ (4.00)</option><option value="3.75">A (3.75)</option>
+            <option value="3.50">A- (3.50)</option><option value="3.25">B+ (3.25)</option>
+            <option value="3.00">B (3.00)</option><option value="2.75">B- (2.75)</option>
+            <option value="2.50">C+ (2.50)</option><option value="2.25">C (2.25)</option>
+            <option value="2.00">D (2.00)</option><option value="0.00">F (0.00)</option>
+        </select>`;
     container.appendChild(row);
 }
 
 function calculateDIU() {
-    const credInputs = document.querySelectorAll('.credits');
-    const gradeInputs = document.querySelectorAll('.grades');
-    
-    let totalPoints = 0;
-    let totalCredits = 0;
-
-    for (let i = 0; i < credInputs.length; i++) {
-        let c = parseFloat(credInputs[i].value);
-        let g = parseFloat(gradeInputs[i].value);
-
-        if (!isNaN(c) && c > 0) {
-            totalPoints += (c * g);
-            totalCredits += c;
+    const creds = document.querySelectorAll('.credits');
+    const grades = document.querySelectorAll('.grades');
+    let totalP = 0, totalC = 0;
+    creds.forEach((c, i) => {
+        let val = parseFloat(c.value);
+        if (!isNaN(val)) {
+            totalP += (val * parseFloat(grades[i].value));
+            totalC += val;
         }
-    }
-
-    if (totalCredits > 0) {
-        let gpa = totalPoints / totalCredits;
-        document.getElementById('final-gpa').innerText = gpa.toFixed(2);
-        document.getElementById('total-creds').innerText = totalCredits;
-    } else {
-        alert("Please enter credit hours for your courses!");
+    });
+    if (totalC > 0) {
+        document.getElementById('final-gpa').innerText = (totalP / totalC).toFixed(2);
+        document.getElementById('total-creds').innerText = totalC;
     }
 }
