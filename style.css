@@ -24,7 +24,6 @@ h1 { text-align: center; margin-bottom: 20px; font-weight: 300; }
 }
 .nav-btn.active { background: var(--neon); color: black; box-shadow: 0 0 10px var(--neon); }
 
-/* Display Area */
 .display-wrapper {
     background: #000; border: 1px solid #222; padding: 30px 15px 10px;
     border-radius: 12px; margin-bottom: 15px; text-align: right; position: relative;
@@ -36,7 +35,7 @@ h1 { text-align: center; margin-bottom: 20px; font-weight: 300; }
     font-family: monospace;
 }
 
-/* 5-Column Grid Fix */
+/* 5-Column Keypad */
 .keypad {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -45,7 +44,7 @@ h1 { text-align: center; margin-bottom: 20px; font-weight: 300; }
 
 .btn {
     height: 52px; border-radius: 8px; border: none; font-weight: bold;
-    cursor: pointer; transition: 0.1s; font-size: 0.95rem;
+    cursor: pointer; font-size: 0.95rem;
 }
 .num { background: #222; color: white; }
 .opt { background: #333; color: var(--neon); }
@@ -61,6 +60,6 @@ h1 { text-align: center; margin-bottom: 20px; font-weight: 300; }
     background: #000; color: white; border: 1px solid #333;
     padding: 10px; border-radius: 6px; width: 50%;
 }
-.add-btn { background: transparent; color: #666; border: 1px dashed #444; width: 100%; padding: 10px; margin: 10px 0; cursor: pointer; }
+.add-btn { background: transparent; color: #888; border: 1px dashed #444; width: 100%; padding: 10px; margin: 10px 0; cursor: pointer; }
 .calc-btn { background: var(--neon); color: black; width: 100%; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; }
 .result-area { margin: 15px 0; color: var(--neon); text-align: center; }
