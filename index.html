@@ -10,53 +10,80 @@
     <div class="container">
         <header>
             <h1>Rezuan Calculator</h1>
-            <div class="nav-bar">
-                <button class="nav-btn active">Calculator</button>
-                <button class="nav-btn" onclick="toggle('sci-panel')">Scientific Options</button>
+            <div class="mode-switch">
+                <button id="calc-nav" class="nav-btn active" onclick="switchTab('standard')">Calculator</button>
+                <button id="cgpa-nav" class="nav-btn" onclick="switchTab('cgpa')">DIU CGPA</button>
             </div>
         </header>
 
-        <div class="calc-box">
-            <div class="display-area">
+        <div id="standard-ui">
+            <div class="display-wrapper">
                 <span id="unit-indicator">DEG</span>
                 <input type="text" id="main-display" value="0" readonly>
             </div>
-
-            <div id="sci-panel" class="keypad scientific hidden">
+            
+            <div class="keypad full-grid">
                 <button class="btn sci" onclick="ins('Math.sin(')">sin</button>
                 <button class="btn sci" onclick="ins('Math.cos(')">cos</button>
                 <button class="btn sci" onclick="ins('Math.tan(')">tan</button>
-                <button class="btn sci" onclick="ins('Math.PI')">π</button>
                 <button class="btn sci" onclick="ins('Math.log10(')">log</button>
-                <button class="btn sci" onclick="ins('Math.log(')">ln</button>
                 <button class="btn sci" onclick="ins('Math.sqrt(')">√</button>
-                <button class="btn sci" onclick="ins('**')">^</button>
-            </div>
 
-            <div class="keypad standard">
                 <button class="btn opt" onclick="clr()">AC</button>
                 <button class="btn opt" onclick="del()">DEL</button>
+                <button class="btn opt" onclick="ins('**')">^</button>
                 <button class="btn opt" onclick="toggleUnit()">DRG</button>
                 <button class="btn opt" onclick="ins('/')">÷</button>
-
+                
                 <button class="btn num" onclick="ins('7')">7</button>
                 <button class="btn num" onclick="ins('8')">8</button>
                 <button class="btn num" onclick="ins('9')">9</button>
+                <button class="btn sci" onclick="ins('Math.PI')">π</button>
                 <button class="btn opt" onclick="ins('*')">×</button>
-
+                
                 <button class="btn num" onclick="ins('4')">4</button>
                 <button class="btn num" onclick="ins('5')">5</button>
                 <button class="btn num" onclick="ins('6')">6</button>
+                <button class="btn sci" onclick="ins('(')">(</button>
                 <button class="btn opt" onclick="ins('-')">-</button>
-
+                
                 <button class="btn num" onclick="ins('1')">1</button>
                 <button class="btn num" onclick="ins('2')">2</button>
                 <button class="btn num" onclick="ins('3')">3</button>
+                <button class="btn sci" onclick="ins(')')">)</button>
                 <button class="btn opt" onclick="ins('+')">+</button>
-
+                
                 <button class="btn num" onclick="ins('0')">0</button>
                 <button class="btn num" onclick="ins('.')">.</button>
-                <button class="btn run" onclick="run()" style="grid-column: span 2;">=</button>
+                <button class="btn run" onclick="run()" style="grid-column: span 3;">=</button>
+            </div>
+        </div>
+
+        <div id="cgpa-ui" class="hidden">
+            <div class="cgpa-card">
+                <div id="course-container">
+                    <div class="course-row">
+                        <input type="number" class="credits" placeholder="Credits">
+                        <select class="grades">
+                            <option value="4.00">A+ (4.00)</option>
+                            <option value="3.75">A (3.75)</option>
+                            <option value="3.50">A- (3.50)</option>
+                            <option value="3.25">B+ (3.25)</option>
+                            <option value="3.00">B (3.00)</option>
+                            <option value="2.75">B- (2.75)</option>
+                            <option value="2.50">C+ (2.50)</option>
+                            <option value="2.25">C (2.25)</option>
+                            <option value="2.00">D (2.00)</option>
+                            <option value="0.00">F (0.00)</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="add-btn" onclick="addCourse()">+ Add Course</button>
+                <div class="result-area">
+                    <p>Total Credits: <span id="total-creds">0</span></p>
+                    <h2>GPA: <span id="final-gpa">0.00</span></h2>
+                </div>
+                <button class="calc-btn" onclick="calculateDIU()">Calculate CGPA</button>
             </div>
         </div>
     </div>
