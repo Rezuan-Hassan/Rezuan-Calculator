@@ -1,33 +1,32 @@
 let display = document.getElementById('main-display');
 let isDeg = true;
 
-// Switch between Scientific and CGPA modes
 function switchTab(type) {
     const std = document.getElementById('standard-ui');
     const cg = document.getElementById('cgpa-ui');
-    const sBtn = document.getElementById('calc-nav');
-    const cBtn = document.getElementById('cgpa-nav');
-
+    document.getElementById('calc-nav').classList.toggle('active', type === 'standard');
+    document.getElementById('cgpa-nav').classList.toggle('active', type === 'cgpa');
+    
     if (type === 'cgpa') {
         std.classList.add('hidden');
         cg.classList.remove('hidden');
-        cBtn.classList.add('active');
-        sBtn.classList.remove('active');
     } else {
         cg.classList.add('hidden');
         std.classList.remove('hidden');
-        sBtn.classList.add('active');
-        cBtn.classList.remove('active');
     }
 }
 
-// Calculator Logic
 function ins(val) {
     if (display.value === '0') display.value = val;
     else display.value += val;
 }
+
 function clr() { display.value = '0'; }
-function del() { display.value = display.value.length > 1 ? display.value.slice(0, -1) : '0'; }
+
+function del() { 
+    display.value = display.value.length > 1 ? display.value.slice(0, -1) : '0'; 
+}
+
 function toggleUnit() {
     isDeg = !isDeg;
     document.getElementById('unit-indicator').innerText = isDeg ? "DEG" : "RAD";
@@ -36,9 +35,14 @@ function toggleUnit() {
 function run() {
     try {
         let exp = display.value;
+        
+        // Correcting trig functions for degrees
         if (isDeg) {
-            exp = exp.replace(/Math\.(sin|cos|tan)\(([^)]+)\)/g, (m, f, v) => `Math.${f}((${v}) * Math.PI / 180)`);
+            exp = exp.replace(/Math\.(sin|cos|tan)\(([^)]+)\)/g, (m, f, v) => {
+                return `Math.${f}((${v}) * Math.PI / 180)`;
+            });
         }
+
         let result = eval(exp);
         display.value = Number.isInteger(result) ? result : parseFloat(result.toFixed(8));
     } catch {
@@ -47,7 +51,6 @@ function run() {
     }
 }
 
-// DIU CGPA Logic
 function addCourse() {
     const row = document.createElement('div');
     row.className = 'course-row';
