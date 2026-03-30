@@ -15,7 +15,7 @@ body {
 
 .container { width: 340px; }
 
-/* Fixed Navigation */
+/* Navigation */
 .calc-nav { display: flex; gap: 10px; justify-content: center; margin-bottom: 25px; }
 .nav-btn {
     background: #1a1a1a;
@@ -28,13 +28,32 @@ body {
 }
 .nav-btn.active { background: var(--neon); color: black; box-shadow: 0 0 15px var(--neon); }
 
+/* Scientific Display */
+.display-wrapper {
+    background: #111;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    text-align: right;
+    position: relative;
+    border: 1px solid #222;
+}
+#main-display {
+    background: transparent;
+    border: none;
+    color: var(--neon);
+    font-size: 2.2rem;
+    width: 100%;
+    text-align: right;
+    outline: none;
+}
+
 /* Keypad Grid Fix */
 .keypad {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
 }
-
 .btn {
     height: 60px;
     border-radius: 12px;
@@ -42,13 +61,12 @@ body {
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.2s;
 }
 .num { background: #222; color: white; }
 .opt { background: #333; color: var(--neon); }
-.run { background: var(--neon); color: black; }
+.run { grid-column: span 2; background: var(--neon); color: black; width: 100%; }
 
-/* CGPA Styling */
+/* CGPA UI */
 .hidden { display: none !important; }
 .cgpa-card { background: var(--card); padding: 20px; border-radius: 15px; border: 1px solid #222; }
 .course-row { display: flex; gap: 8px; margin-bottom: 10px; }
@@ -58,4 +76,4 @@ body {
 }
 .add-btn { background: transparent; color: #666; border: 1px dashed #444; width: 100%; padding: 10px; margin: 10px 0; cursor: pointer; }
 .calc-btn { background: var(--neon); color: black; border: none; width: 100%; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; }
-.result-area { margin: 15px 0; border-top: 1px solid #333; padding-top: 10px; color: var(--neon); }
+.result-area { margin: 15px 0; color: var(--neon); }
